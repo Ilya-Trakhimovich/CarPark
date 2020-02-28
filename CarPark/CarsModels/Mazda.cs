@@ -6,9 +6,10 @@ namespace CarPark
 {
     internal class Mazda : ICar
     {
-        public string Name { get; set; }
+        public string Mark { get; set; } = "Mazda";
         public int Mileage { get; set; }
         public double Cost { get; set; }
         public string Model { get; set; }
+        public string RegistrationNumber { get; set; }
     }
 }

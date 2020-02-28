@@ -8,8 +8,9 @@ namespace CarPark
     {
         public string Mark { get; set; } = "BMW";
         public int Mileage { get; set; }
-        public double Cost { get; set; }
+        public int Cost { get; set; }
         public string Model { get; set; }
         public string RegistrationNumber { get; set; }
+        public DateTime YearManufacture { get; set; }
     }
 }

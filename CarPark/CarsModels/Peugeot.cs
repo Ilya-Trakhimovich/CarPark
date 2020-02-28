@@ -6,10 +6,11 @@ namespace CarPark
 {
     internal class Peugeot : ICar
     {
-        public string Mark { get; set; } = "Peugeot";
+        public string Mark { get; set; } = "PEUGEOT";
         public int Mileage { get; set; }
-        public double Cost { get; set; }
+        public int Cost { get; set; }
         public string Model { get; set; }
         public string RegistrationNumber { get; set; }
+        public DateTime YearManufacture { get; set; }
     }
 }

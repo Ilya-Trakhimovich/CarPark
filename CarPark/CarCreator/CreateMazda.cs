@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CarPark
 {
-    internal class CreateMazda : CarCreator
+    public class CreateMazda : CarCreator1
     {
         public override ICar FactoryMethod()
         {

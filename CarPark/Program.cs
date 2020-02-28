@@ -10,18 +10,20 @@ namespace CarPark
         static void Main(string[] args)
         {
             CarPark carPark = new CarPark();
-            Menu<CarPark> menu = new Menu<CarPark>();
+            var menu = new MainMenu();
             bool flag = true;
 
             while (flag)
             {
-                int choice = menu.ShowMenu(carPark);
+                string carparkName = carPark.Name;
+                int choice = menu.ShowMenu(carparkName);
                 var tempChoice = (MenuAction)choice;
 
                 switch (tempChoice)
                 {
                     case MenuAction.AddCar:
-                        {
+                        {                            
+                            carPark.AddCar();
                             break;
                         }
                     case MenuAction.SellCar:

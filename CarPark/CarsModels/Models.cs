@@ -4,8 +4,11 @@ using System.Text;
 
 namespace CarPark
 {
-    internal abstract class CarCreator
+    enum Models
     {
-        public abstract ICar FactoryMethod();
+        BMW,
+        Audi,
+        Mazda,
+        Peugeot
     }
 }

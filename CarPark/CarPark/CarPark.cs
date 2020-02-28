@@ -14,9 +14,47 @@ namespace CarPark
             _listOfCars = new List<ICar>();
         }
 
-        public void AddCar(ICar car)
+        private ICar CreateCar()
         {
-            _listOfCars.Add(car);
+            string mark = Settings.SetName("car's mark").ToUpper();
+            CarCreator1 creator;
+
+            switch (mark)
+            {
+                case "BMW":
+                    {
+                        creator = new CreateBMW();
+                        break;
+                    }
+                case "AUDI":
+                    {
+                        creator = new CreateAudi();
+                        break;
+                    }
+                case "MAZDA":
+                    {
+                        creator = new CreateMazda();
+                        break;
+                    }
+                case "Peugeot":
+                    {
+                        creator = new CreatePeugeot();
+                        break;
+                    }
+                default:
+                    {
+                        creator = default;
+                        Settings.ShowMessage("Error. List of car's marks: Audi, BMW, Mazda, Peugeot.\n");
+                        break;
+                    }
+            }
+
+            return creator?.FactoryMethod(); 
+        }
+
+        public void AddCar()
+        {
+            _listOfCars.Add(CreateCar());
         }
 
         public void GetInfoOfPark()

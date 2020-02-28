@@ -30,6 +30,46 @@ namespace SettingsLib
             return name;
         }
 
+        public static int SetMileage()
+        {
+            int startMileage = 40000;
+            int endMileage = 150000;
+            int mileage = _rnd.Next(startMileage, endMileage);
+
+            return mileage;
+        }
+
+        public static DateTime SetYearOfCarManufacture()
+        {
+            int startYear = 2000;
+            int endYear = 2021;
+            int yearManufacture = _rnd.Next(startYear, endYear);
+            DateTime manufacture = new DateTime(yearManufacture, 1, 1);
+
+            return manufacture;
+        }
+
+        public static int SetCarCost()
+        {
+            bool flag = true;
+            int cost = default;
+
+            while (flag)
+            {
+                Console.Write("Enter cost of the car: ");
+
+                bool isCorrectNumber = int.TryParse(Console.ReadLine(), out int tempCost);
+
+                if (isCorrectNumber && tempCost > 0)
+                {
+                    cost = tempCost;
+                    flag = false;
+                }
+            }
+
+            return cost;
+        }
+
         public static string InputRegistrationNumber()
         {        
             Console.Write("Enter registration number: ");

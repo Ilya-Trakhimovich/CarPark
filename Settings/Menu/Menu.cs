@@ -4,49 +4,16 @@ using System.Text;
 
 namespace SettingsLib
 {
-    public class Menu<T> where T: class
-    {
-        private const string _arrow = "--> ";
-        private readonly string[] _menu =
-            {
-                "  Add car",
-                "  Sell car",
-                "  Display information about car",
-                "  Display information about park",
-                "  Exit."
-            };
-
-        private void Welcome(T tempItem)
-        { 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"\t\t***** {tempItem.ToString()} ***** \n\n");
-            Console.ResetColor();
-        }
-
-        private void MoveArrow(int moveChoice, T tempItem)
-        {
-            Console.Clear();
-            Welcome(tempItem);
-
-            for (var i = 0; i < _menu.Length; i++)
-            {
-                if (i == moveChoice)
-                {
-                    Console.Write(_arrow);
-                }
-
-                Console.WriteLine(_menu[i]);
-            }
-        }
-
-        public int ShowMenu(T tempItem)
+    public class MainMenu
+    {           
+        public int ShowMenu(string name)
         {
             int choice = 0;
             Console.CursorVisible = false;
 
             while (true)
             {
-                MoveArrow(choice, tempItem);
+                MoveArrow(choice, name);
 
                 switch (Console.ReadKey().Key)
                 {
@@ -75,5 +42,37 @@ namespace SettingsLib
                 }
             }
         }
+        private void MoveArrow(int moveChoice, string name)
+        {
+            Console.Clear();
+            DisplayName(name);
+
+            for (var i = 0; i < _menu.Length; i++)
+            {
+                if (i == moveChoice)
+                {
+                    Console.Write(_arrow);
+                }
+
+                Console.WriteLine(_menu[i]);
+            }
+        }
+
+        private void DisplayName(string name)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"\t\t***** {name} ***** \n\n");
+            Console.ResetColor();
+        }
+
+        private const string _arrow = "--> ";
+        private readonly string[] _menu =
+            {
+                "  Add car",
+                "  Sell car",
+                "  Display information about car",
+                "  Display information about park",
+                "  Exit."
+            };
     }
 }

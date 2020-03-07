@@ -5,15 +5,15 @@ using System.Text;
 namespace SettingsLib
 {
     public class MainMenu
-    {           
-        public int ShowMenu(string name)
+    {
+        public int ShowMenu(string name, Action method)
         {
             int choice = 0;
             Console.CursorVisible = false;
 
             while (true)
             {
-                MoveArrow(choice, name);
+                MoveArrow(choice, name, method);
 
                 switch (Console.ReadKey().Key)
                 {
@@ -42,10 +42,12 @@ namespace SettingsLib
                 }
             }
         }
-        private void MoveArrow(int moveChoice, string name)
+        
+        private void MoveArrow(int moveChoice, string name, Action method)
         {
             Console.Clear();
             DisplayName(name);
+            method();
 
             for (var i = 0; i < _menu.Length; i++)
             {
@@ -68,11 +70,11 @@ namespace SettingsLib
         private const string _arrow = "--> ";
         private readonly string[] _menu =
             {
-                "  Add car",
-                "  Sell car",
+                " Add car",
+                //"  Sell car",
                 "  Display information about car",
                 "  Display information about park",
-                "  Exit."
+                "  Exit.\n"
             };
     }
 }

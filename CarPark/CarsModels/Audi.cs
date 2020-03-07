@@ -13,6 +13,7 @@ namespace CarPark
         public string Model { get; set; }
         public string RegistrationNumber { get; set; }
         public DateTime YearManufacture { get; set; }
+        public int VolumeFuel { get; set; } 
 
         public Audi()
         {
@@ -21,6 +22,7 @@ namespace CarPark
             Mileage = Settings.SetMileage();
             Cost = Settings.SetCarCost();            
             RegistrationNumber = Settings.SetRegistrationNumber();
+            VolumeFuel = Settings.SetVolumeFuel();
         }
     }
 }

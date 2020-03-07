@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using SettingsLib;
 using System;
+using System.Linq;
 
 namespace CarPark
 {
@@ -12,6 +13,64 @@ namespace CarPark
         {
             Name = Settings.SetName("name of park");
             _listOfCars = new List<ICar>();
+        }
+
+        public void AddCar()
+        {
+            ICar car = CreateCar();
+
+            if (car != null)
+            {
+                _listOfCars.Add(car);
+            }
+        }
+
+        public void GetInfoOfPark()
+        {
+            if (CheckParkForEmptiness())
+            {
+                return;
+            }
+            else
+            {
+                Settings.ShowMessage(
+                    $"The park {this.Name} contains:\n" +
+                    $"  BMW - {this._listOfCars.Count(car => car?.Mark == "BMW")} cars\n" +
+                    $"  AUDI - {this._listOfCars.Count(car => car?.Mark == "AUDI")} cars\n" +
+                    $"  Mazda - {this._listOfCars.Count(car => car?.Mark == "MAZDA")} cars");
+            }
+        }
+
+        public void ShowCarsList()
+        {
+            foreach (var car in _listOfCars)
+            {
+                if (car != null)
+                {
+                    Console.WriteLine($"{car.Mark} {car.Model} || {car.RegistrationNumber} || {car?.Cost}$/min || {car.VolumeFuel}L");
+                }
+            }
+
+            Console.WriteLine();
+        }
+
+        public ICar GetInfoCar()
+        {
+            if (CheckParkForEmptiness())
+            {
+                return null;
+            }
+            else
+            {
+                ICar car = GetCarByRegistrationNumber();
+
+                if (car != null)
+                {
+                    car.DisplayInfo();
+                }
+            }
+
+            return null;
         }
 
         private ICar CreateCar()
@@ -36,59 +95,49 @@ namespace CarPark
                         creator = new CreateMazda();
                         break;
                     }
-                case "Peugeot":
-                    {
-                        creator = new CreatePeugeot();
-                        break;
-                    }
                 default:
                     {
                         creator = default;
+
                         Settings.ShowMessage("Error. List of car's marks: Audi, BMW, Mazda, Peugeot.\n");
                         break;
                     }
             }
 
-            return creator?.FactoryMethod(); 
+            return creator?.FactoryMethod();
         }
 
-        public void AddCar()
-        {
-            _listOfCars.Add(CreateCar());
-        }
-
-        public void GetInfoOfPark()
+        private bool CheckParkForEmptiness()
         {
             if (_listOfCars.Count == 0)
             {
-                Settings.ShowMessage($"The park {this.Name} is empty.\n");
+                Settings.ShowMessage($"The park {this?.Name} is empty.");
+                return true;
             }
-            else
-            {
-                Settings.ShowMessage($"The park {this.Name} contains {this._listOfCars.Count} cars.\n");
-            }
+
+            return false;
         }
 
-        public void SellCar()
+        private ICar GetCarByRegistrationNumber()
         {
-            bool flag = true;
-            string model;
-            string registrationNumber;
+            ICar car = null;
+            string registrationNumber = Settings.SetName("registration number").ToUpper();
 
-            while (flag)
+            for (var i = 0; i < _listOfCars.Count; i++)
             {
-                model = Settings.SetName("model");
-                registrationNumber = Settings.InputRegistrationNumber();
-
-                for (var i = 0; i < _listOfCars.Count; i++)
+                if (_listOfCars[i].RegistrationNumber == registrationNumber)
                 {
-                    if (_listOfCars[i].Model == model & _listOfCars[i].RegistrationNumber == registrationNumber)
-                    {
-                        _listOfCars[i] = null;
-                        Console.WriteLine("The car is sold.");
-                    }
+                    car = _listOfCars[i];
+                    break;
                 }
             }
+
+            if (car == null)
+            {
+                Settings.ShowMessage("The park hasnt that car.\n");
+            }
+
+            return car;
         }
 
         private readonly List<ICar> _listOfCars;

@@ -32,8 +32,8 @@ namespace SettingsLib
 
         public static int SetMileage()
         {
-            int startMileage = 40000;
-            int endMileage = 150000;
+            int startMileage = 20000;
+            int endMileage = 50000;
             int mileage = _rnd.Next(startMileage, endMileage);
 
             return mileage;
@@ -41,9 +41,9 @@ namespace SettingsLib
 
         public static DateTime SetYearOfCarManufacture()
         {
-            int startYear = 2000;
-            int endYear = 2021;
-            int yearManufacture = _rnd.Next(startYear, endYear);
+            int minYear = 2015;
+            int maxYear = 2020;
+            int yearManufacture = _rnd.Next(minYear, maxYear);
             DateTime manufacture = new DateTime(yearManufacture, 1, 1);
 
             return manufacture;
@@ -51,30 +51,20 @@ namespace SettingsLib
 
         public static int SetCarCost()
         {
-            bool flag = true;
-            int cost = default;
-
-            while (flag)
-            {
-                Console.Write("Enter cost of the car: ");
-
-                bool isCorrectNumber = int.TryParse(Console.ReadLine(), out int tempCost);
-
-                if (isCorrectNumber && tempCost > 0)
-                {
-                    cost = tempCost;
-                    flag = false;
-                }
-            }
+            int minPrice = 1;
+            int maxPrice = 5;
+            int cost = _rnd.Next(minPrice, maxPrice);
 
             return cost;
         }
 
-        public static string InputRegistrationNumber()
-        {        
-            Console.Write("Enter registration number: ");
-            string regNumbers = Console.ReadLine();
-            return regNumbers;
+        public static int SetVolumeFuel()
+        {
+            int minVolume = 20;
+            int maxVolume = 50;
+            int volumeFuel = _rnd.Next(minVolume, maxVolume);
+
+            return volumeFuel;
         }
 
         public static string SetRegistrationNumber()

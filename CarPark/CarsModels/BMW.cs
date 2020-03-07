@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SettingsLib;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,5 +13,17 @@ namespace CarPark
         public string Model { get; set; }
         public string RegistrationNumber { get; set; }
         public DateTime YearManufacture { get; set; }
+        public int VolumeFuel { get; set; } = default;
+
+        public BMW()
+        {
+            Model = Settings.SetName("car's model");
+            YearManufacture = Settings.SetYearOfCarManufacture();
+            Mileage = Settings.SetMileage();
+            Cost = Settings.SetCarCost();
+            RegistrationNumber = Settings.SetRegistrationNumber();
+            VolumeFuel = Settings.SetVolumeFuel();
+        }
+        
     }
 }

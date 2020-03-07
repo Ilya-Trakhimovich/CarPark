@@ -12,16 +12,19 @@ namespace CarPark
         int Mileage { get; set; }
         int Cost { get; set; }
         string RegistrationNumber { get; set; }
+        int VolumeFuel { get; set; }
 
-        void Display()
+        void DisplayInfo()
         {
             Console.WriteLine(
-                $"Mark: {Mark}\n" +
+                $"\nMark: {Mark}\n" +
                 $"Model: {Model}\n" +
-                $"Year of manufacture: {YearManufacture.Year}" +
+                $"Year of manufacture: {YearManufacture.Year}\n" +
                 $"Registration number: {RegistrationNumber}\n" +
-                $"Mileage: {Mileage} km,\n" +
-                $"Cost: {Cost}$");
+                $"Mileage: {Mileage} km\n" +
+                $"Cost: {Cost}$/min\n" +
+                $"VolumeFuel: {VolumeFuel}L");
+            Console.ReadKey();
         }
     }
 }

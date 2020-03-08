@@ -75,6 +75,7 @@ namespace SettingsLib
                 "  Display information about car",
                 "  Display information about park",
                 "  Display event log",
+                "  Start moving",
                 "  Exit.\n"
             };
     }

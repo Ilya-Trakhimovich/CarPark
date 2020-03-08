@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SettingsLib;
 
 namespace CarPark.EventArgs
 {
@@ -15,6 +16,12 @@ namespace CarPark.EventArgs
 
         public static void DisplayEventLog()
         {
+            if (log.Count == 0)
+            {
+                Settings.ShowMessage("List is empty");
+                return;
+            }
+            
             foreach (var e in log)
             {
                 Console.WriteLine(e);

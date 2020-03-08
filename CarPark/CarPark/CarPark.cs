@@ -111,6 +111,16 @@ namespace CarPark
             _listOfCars = RemoveNullCar();
         }
 
+        public bool GetCountCars()
+        {
+            if (_listOfCars.Count == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         private void CallEvent(CarParkEventArgs e, CarParkHandler handler)
         {
             if (e != null)
@@ -179,7 +189,7 @@ namespace CarPark
             return false;
         }
 
-        private ICar GetCarByRegistrationNumber()
+        public ICar GetCarByRegistrationNumber()
         {
             ICar car = null;
             string registrationNumber = Settings.SetName("registration number").ToUpper();

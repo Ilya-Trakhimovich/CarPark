@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SettingsLib
 {
@@ -82,6 +83,12 @@ namespace SettingsLib
         {
             Console.WriteLine(message);
             Console.ReadKey();
+        }
+
+        public static void BurnFuel()
+        {
+            int dfuel = 0;
+
         }
 
         private static string GetRegistrationNumbers()

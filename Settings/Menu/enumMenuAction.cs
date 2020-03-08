@@ -4,13 +4,14 @@ using System.Text;
 
 namespace SettingsLib.Menu
 {
-    public enum MenuAction
+    public enum enumMenuAction
     {
         AddCar,
         SellCar,        
         GetInfoOfCar,
         GetInfoOfPark,
         DisplayEventLog,
-        Exit
+        StartMoving,
+        Exit 
     }
 }

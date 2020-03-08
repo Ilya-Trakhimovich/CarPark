@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using CarPark.EventArgs;
+using CarPark.Lease;
 using DocumentFormat.OpenXml.Office.CustomUI;
 using SettingsLib;
 using SettingsLib.Menu;
@@ -19,6 +20,7 @@ namespace CarPark
         {
             _carPark.Added += GetMessageForLog;
             _carPark.Sold += GetMessageForLog;
+            _lease.StartedMove += GetMessageForLog;
 
             bool flag = true;
 
@@ -26,36 +28,41 @@ namespace CarPark
             {
                 string carparkName = _carPark.Name;
                 int choice = _menu.ShowMenu(carparkName, _carPark.ShowCarsList);
-                var tempChoice = (MenuAction)choice;
+                var tempChoice = (enumMenuAction)choice;
 
                 switch (tempChoice)
                 {
-                    case MenuAction.AddCar:
+                    case enumMenuAction.AddCar:
                         {
                             _carPark.AddCar();
                             break;
                         }
-                    case MenuAction.SellCar:
+                    case enumMenuAction.SellCar:
                         {
                             _carPark.SellCar();
                             break;
                         }
-                    case MenuAction.GetInfoOfCar:
+                    case enumMenuAction.GetInfoOfCar:
                         {
                             _carPark.GetInfoCar();
                             break;
                         }
-                    case MenuAction.GetInfoOfPark:
+                    case enumMenuAction.GetInfoOfPark:
                         {
                             _carPark.GetInfoOfPark();
                             break;
                         }
-                    case MenuAction.DisplayEventLog:
+                    case enumMenuAction.DisplayEventLog:
                         {
                             EventLog.DisplayEventLog();
                             break;
                         }
-                    case MenuAction.Exit:
+                    case enumMenuAction.StartMoving:
+                        {
+                            _lease.StartMoving(_carPark);
+                            break;
+                        }
+                    case enumMenuAction.Exit:
                         {
                             Environment.Exit(0);
                             break;
@@ -72,5 +79,6 @@ namespace CarPark
 
         private static readonly CarPark _carPark = new CarPark();
         private static readonly MainMenu _menu = new MainMenu();
+        private static readonly LeaseFunction _lease = new LeaseFunction();
     }
 }

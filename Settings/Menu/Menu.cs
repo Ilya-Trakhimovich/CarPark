@@ -70,10 +70,11 @@ namespace SettingsLib
         private const string _arrow = "--> ";
         private readonly string[] _menu =
             {
-                " Add car",
-                //"  Sell car",
+                "  Add car",
+                "  Sell car",
                 "  Display information about car",
                 "  Display information about park",
+                "  Display event log",
                 "  Exit.\n"
             };
     }

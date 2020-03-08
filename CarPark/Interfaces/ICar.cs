@@ -22,8 +22,8 @@ namespace CarPark
                 $"Year of manufacture: {YearManufacture.Year}\n" +
                 $"Registration number: {RegistrationNumber}\n" +
                 $"Mileage: {Mileage} km\n" +
-                $"Cost: {Cost}$/min\n" +
-                $"VolumeFuel: {VolumeFuel}L");
+                $"Cost: {Cost} $/min\n" +
+                $"Volume Fuel: {VolumeFuel}L");
             Console.ReadKey();
         }
     }

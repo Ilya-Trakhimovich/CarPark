@@ -17,7 +17,7 @@ namespace CarPark
 
         public BMW()
         {
-            Model = Settings.SetName("car's model");
+            Model = Settings.SetName("car's model").ToUpper();
             YearManufacture = Settings.SetYearOfCarManufacture();
             Mileage = Settings.SetMileage();
             Cost = Settings.SetCarCost();

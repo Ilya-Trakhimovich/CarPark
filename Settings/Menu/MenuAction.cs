@@ -7,9 +7,10 @@ namespace SettingsLib.Menu
     public enum MenuAction
     {
         AddCar,
-        //SellCar,        
+        SellCar,        
         GetInfoOfCar,
         GetInfoOfPark,
+        DisplayEventLog,
         Exit
     }
 }

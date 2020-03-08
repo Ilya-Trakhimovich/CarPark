@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPark", "CarPark\CarPark.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SettingsLib", "Settings\SettingsLib.csproj", "{21FABB18-A550-4947-BD76-05A215711EDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User", "User\User.csproj", "{AA23D45A-A106-4CD9-959E-1878CE73132C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{21FABB18-A550-4947-BD76-05A215711EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21FABB18-A550-4947-BD76-05A215711EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21FABB18-A550-4947-BD76-05A215711EDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA23D45A-A106-4CD9-959E-1878CE73132C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA23D45A-A106-4CD9-959E-1878CE73132C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA23D45A-A106-4CD9-959E-1878CE73132C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA23D45A-A106-4CD9-959E-1878CE73132C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

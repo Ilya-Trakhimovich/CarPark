@@ -7,10 +7,10 @@ namespace User
 {
     class User
     {
-
         public event UserHandler Added;
         public string Name { get; private set; }
         public int Money { get; set; }
+
         public User(int money)
         {
             Money = money;
@@ -22,7 +22,7 @@ namespace User
                 handler?.Invoke(this, e);
         }
 
-        public void OnAdded(UserEventArgs e)
+        private void OnAdded(UserEventArgs e)
         {
             CallEvent(e, Added);
         }

@@ -4,7 +4,10 @@ using System.Text;
 
 namespace CarPark
 {
-    class ExampleGIT
+    public class ExampleGIT
     {
+        public string Name { get; set; }
+        public string PhoneNumber { get; set; }
+        public int Age { get; set; }
     }
 }
